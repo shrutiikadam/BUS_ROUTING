@@ -1,31 +1,59 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-import random
-import time
+import pandas as pd
+import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["http://localhost:3000"])
 
-# Simulated bus routes with initial locations
-buses = {
-    "Bus 101": [[28.6139, 77.2090], [28.6200, 77.2150], [28.6250, 77.2200]],  # Route 1
-    "Bus 202": [[28.5355, 77.3910], [28.5400, 77.4000], [28.5500, 77.4100]],  # Route 2
-    "Bus 303": [[28.7041, 77.1025], [28.7100, 77.1100], [28.7150, 77.1200]],  # Route 3
-}
+# Load GTFS data
+GTFS_DIR = "gtfs_mumbai"
 
-bus_positions = {bus: buses[bus][0] for bus in buses}  # Start from first point
+try:
+    stops_df = pd.read_csv(os.path.join(GTFS_DIR, "stops.txt"))
+    routes_df = pd.read_csv(os.path.join(GTFS_DIR, "routes.txt"))
+    trips_df = pd.read_csv(os.path.join(GTFS_DIR, "trips.txt"))
+    stop_times_df = pd.read_csv(os.path.join(GTFS_DIR, "stop_times.txt"))
+except FileNotFoundError as e:
+    print(f"Error loading GTFS data: {e}")
+    stops_df = routes_df = trips_df = stop_times_df = pd.DataFrame()  # Empty dataframes to prevent crashes
 
-@app.route('/buses', methods=['GET'])
-def get_bus_locations():
-    global bus_positions
 
-    # Move each bus along its route randomly
-    for bus, route in buses.items():
-        current_index = route.index(bus_positions[bus])
-        next_index = (current_index + 1) % len(route)  # Loop back after last stop
-        bus_positions[bus] = route[next_index]
+@app.route("/bus/<bus_number>", methods=["GET"])
+def get_bus_stops(bus_number):
+    """Fetch ordered stops for a given bus number"""
+    if routes_df.empty:
+        return jsonify({"error": "GTFS data not loaded"}), 500
 
-    return jsonify(bus_positions)
+    route = routes_df[routes_df["route_short_name"].astype(str) == str(bus_number)]
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    if route.empty:
+        return jsonify({"error": "Bus not found"}), 404
+
+    route_id = route.iloc[0]["route_id"]
+    trips = trips_df[trips_df["route_id"] == route_id]
+
+    if trips.empty:
+        return jsonify({"error": "No trips found for this bus"}), 404
+
+    # Choose the first trip by default (can be optimized further)
+    trip_id = trips.iloc[0]["trip_id"]
+    stop_times = stop_times_df[stop_times_df["trip_id"] == trip_id]
+
+    if stop_times.empty:
+        return jsonify({"error": "No stop times found"}), 404
+
+    # Merge stops with stop times to maintain the correct sequence
+    stops = stop_times.merge(stops_df, on="stop_id")[["stop_id", "stop_name", "stop_lat", "stop_lon", "stop_sequence"]]
+    stops = stops.sort_values(by="stop_sequence")  # Sort by stop sequence
+
+    if stops.empty:
+        return jsonify({"error": "No stops found"}), 404
+
+    stop_list = stops[["stop_id", "stop_name", "stop_lat", "stop_lon"]].dropna().to_dict(orient="records")
+
+    return jsonify({"bus_number": bus_number, "stops": stop_list})
+
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=5000)  # Allow external access
