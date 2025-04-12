@@ -1,22 +1,17 @@
 import React, { useState } from "react";
-import MapComponent from "./components/MapComponent";
+import HomePage from "./pages/Homepage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AuthPage from "./pages/AuthPage";
 
 function App() {
-  const [busNumber, setBusNumber] = useState("");
 
   return (
-    <div>
-      <h2>Find Bus Stops</h2>
-      <input
-        type="text"
-        placeholder="Enter Bus Number"
-        value={busNumber}
-        onChange={(e) => setBusNumber(e.target.value)}
-      />
-      <button onClick={() => setBusNumber(busNumber)}>Search</button>
-
-      {busNumber && <MapComponent busNumber={busNumber} />}
-    </div>
+    <Router>
+      <Routes>
+        <Route path= "/" element={<HomePage />} />
+        <Route path= "/auth" element={<AuthPage />} />
+      </Routes>
+    </Router>
   );
 }
 

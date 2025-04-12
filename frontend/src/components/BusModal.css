@@ -1,0 +1,72 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    margin-top: 3%;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(255, 140, 0, 0.3);
+    background: rgba(25, 25, 25, 0.85);
+  }
+  
+  .left-panel {
+    width: 35%;
+    padding: 30px;
+    color: white;
+    overflow-y: auto;
+  }
+  
+  .right-panel {
+    width: 65%;
+    background: #111;
+    position: relative;
+  }
+  
+  .bus-number {
+    font-size: 2rem;
+    background: linear-gradient(90deg, #ff8800, #ffcc00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+  }
+  
+  .direction {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #bbb;
+  }
+  
+  .stop-list {
+    list-style: none;
+    padding: 0;
+    color: #eee;
+  }
+  
+  .stop-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 2rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  

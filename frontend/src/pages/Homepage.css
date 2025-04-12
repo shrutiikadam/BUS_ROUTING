@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;500;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0d0d0d;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.glass-navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1000;
+}
+
+.brand-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: white;
+}
+
+.login-btn {
+  background: linear-gradient(90deg, #ff6600, #ff9900);
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 25px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 2rem 2rem;
+}
+
+.hero-overlay {
+    margin-bottom: 4rem;
+}
+
+.hero-heading {
+  font-size: 3.5rem;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.gradient-text {
+  font-size: 3.5rem;
+  background: linear-gradient(90deg, #ff6600, #ff9900);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-sub {
+  font-size: 1.2rem;
+  font-weight: 300;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  background: linear-gradient(90deg, #ff6600, #ff9900);
+  border: none;
+  padding: 0.75rem 1.8rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+  box-shadow: 0 0 12px rgba(255, 102, 0, 0.3);
+}
+
+.cta-btn:hover {
+  background: #cc5200;
+}
+
+/* Search Area */
+.search-area {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #121212;
+}
+
+.search-area input {
+  padding: 0.7rem 1rem;
+  width: 260px;
+  border-radius: 10px;
+  border: none;
+  margin-right: 1rem;
+  font-size: 1rem;
+  background-color: #1c1c1c;
+  color: white;
+}
+
+.search-area button {
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg, #ff6600, #ff9900);
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Result Section */
+.result-section {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4rem 2rem;
+  background-color: #0f0f0f;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.details-panel {
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.details-panel h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #ff7b00;
+}
+
+.details-panel ul {
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.details-panel ul li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+.action-btns {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.action-btns button {
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg, #ff6600, #ff9900);
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Map Section */
+.map-panel {
+  flex: 1;
+  min-width: 300px;
+  max-width: 700px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 102, 0, 0.2);
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+
+.auth-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-info {
+  color: #fff;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid #ff6600;
+  color: #ff6600;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #ff6600;
+  color: white;
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+  .result-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .map-panel, .details-panel {
+    width: 100%;
+  }
+
+  .glass-navbar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .brand-name {
+    font-size: 1.5rem;
+  }
+
+  .login-btn {
+    padding: 0.5rem 1.2rem;
+  }
+
+  .hero-heading {
+    font-size: 2.5rem;
+  }
+
+  .search-area input, .search-area button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .action-btns {
+    flex-direction: column;
+  }
+}

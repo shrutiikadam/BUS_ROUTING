@@ -1,0 +1,9 @@
+.btn-secondary {
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(90deg, #ff6600, #ff9900);
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+  }
