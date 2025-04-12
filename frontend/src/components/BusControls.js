@@ -95,7 +95,7 @@ const BusControls = ({ busNumber, stops, mapRef }) => {
 
       {stops.length > 0 && (
         <div>
-          <h3>Bus Stops for Bus {busNumber}</h3>
+          {/* <h3>Bus Stops for Bus {busNumber}</h3>
           <ul>
             {stops.map((stop, index) => (
               <li key={stop.stop_id}>
@@ -105,7 +105,7 @@ const BusControls = ({ busNumber, stops, mapRef }) => {
                 <br /> 📍 Lat: {stop.stop_lat}, Lon: {stop.stop_lon}
               </li>
             ))}
-          </ul>
+          </ul> */}
           <div className="button-group">
 
           <button

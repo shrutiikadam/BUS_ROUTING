@@ -267,3 +267,197 @@ body, html {
     flex-direction: column;
   }
 }
+
+/* Existing styles from HomePage.css */
+
+/* Popup Window Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.popup-container {
+  width: 90%;
+  height: 85vh;
+  max-width: 1200px;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #ff9966, #ff5e62);
+  color: white;
+}
+
+.popup-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0 8px;
+  line-height: 1;
+}
+
+/* Map and Stops Containers */
+.popup-map-container {
+  height: 50%;
+  width: 100%;
+  position: relative;
+}
+
+#popup-map {
+  height: 100%;
+  width: 100%;
+}
+
+.popup-stops-container {
+  height: 50%;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+}
+
+.popup-stops-container h3 {
+  color: #333;
+  margin-top: 0;
+  border-bottom: 2px solid #ff9966;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Stops Timeline */
+.stops-timeline {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.stop-item {
+  display: flex;
+  margin-bottom: 25px;
+  align-items: flex-start;
+}
+
+.stop-marker {
+  position: relative;
+  width: 30px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marker-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #4285f4;
+  position: relative;
+  z-index: 5;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.marker-dot.start {
+  background-color: #34a853;
+  width: 20px;
+  height: 20px;
+}
+
+.marker-dot.end {
+  background-color: #ea4335;
+  width: 20px;
+  height: 20px;
+}
+
+.connector-line {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: calc(100% + 10px);
+  background-color: #dadce0;
+}
+
+.stop-details {
+  flex: 1;
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+}
+
+.stop-details h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.stop-location, .arrival-time {
+  margin: 3px 0;
+  font-size: 0.9rem;
+  color: #5f6368;
+}
+
+.stop-details p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #5f6368;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 15px;
+}
+
+/* Loading Spinner */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 153, 102, 0.3);
+  border-radius: 50%;
+  border-top-color: #ff9966;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
